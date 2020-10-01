@@ -1,3 +1,8 @@
+---
+tags: windows
+noedit: true
+---
+
 # Базовая настройка Windows Server
 
 ![image](/images/fat_unicorn.png)

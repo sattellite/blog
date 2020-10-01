@@ -1,3 +1,8 @@
+---
+tags: git
+noedit: true
+---
+
 # Скачивание определенной директории из git-репозитория
 
 Нашёл решение для скачивания определенной директории из git-репозитория. Это перевод [ответа на StackOverflow](http://stackoverflow.com/questions/600079/is-there-any-way-to-clone-a-git-repositorys-sub-directory-only/13738951#13738951), который в свою очередь является хорошим примером к документации по [Sparse Checkout](https://git-scm.com/docs/git-read-tree#_sparse_checkout) в Git.

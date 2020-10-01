@@ -1,3 +1,8 @@
+---
+tags: linux, iptables, network
+noedit: true
+---
+
 # Linux Policy-Based Routing
 
 Заметка из выдержек LARTC.

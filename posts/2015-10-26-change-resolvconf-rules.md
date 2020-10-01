@@ -1,3 +1,8 @@
+---
+tags: fedora, linux, network
+noedit: true
+---
+
 # Изменение правил resolvconf на лету
 
 Случилась ситуация, когда надо было заменить содержимое /etc/resolv.conf стандартными средствами `resolvconf`, используемого в Ubuntu.

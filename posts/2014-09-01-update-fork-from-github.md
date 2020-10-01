@@ -1,3 +1,8 @@
+---
+tags: git
+noedit: true
+---
+
 # Обновление форка через интерфейс GitHub
 
 <img height="50%" width="50%" alt="the Robotocat" src="https://octodex.github.com/images/Robotocat.png">

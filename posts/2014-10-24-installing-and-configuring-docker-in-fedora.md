@@ -1,3 +1,8 @@
+---
+tags: docker, linux
+noedit: true
+---
+
 # Установка и настройка docker в Fedora
 
 Как подсказывает нам Викепедия:

@@ -1,3 +1,8 @@
+---
+tags: freebsd, raid
+noedit: true
+---
+
 # Soft-RAID во FreeBSD
 
 Список команд для создания soft-RAID во FreeBSD на примере, когда имеем 2 жестких диска /dev/ada0 и /dev/ada1:
