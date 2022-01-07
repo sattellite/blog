@@ -11,6 +11,13 @@ tags: go, fuzz, fuzzing, test
   - [Что такое фаззинг тестирование](#что-такое-фаззинг-тестирование)
   - [История фаззинг тестирования](#история-фаззинг-тестирования)
   - [Зачем нужно фаззинг тестирование?](#зачем-нужно-фаззинг-тестирование)
+  - [Что можно тестировать с помощью фаззинга](#что-можно-тестировать-с-помощью-фаззинга)
+  - [Типы фаззеров](#типы-фаззеров)
+- [Использование фаззеров в Go](#использование-фаззеров-в-go)
+  - [go fuzz](#go-fuzz)
+  - [native fuzzing](#native-fuzzing)
+- [Источники информации](#источники-информации)
+
 
 ## Что такое фаззинг тестирование?
 
@@ -66,28 +73,74 @@ tags: go, fuzz, fuzzing, test
 Фаззер ищет ошибки без предубеждений везде, даже там, где код написал лучший
 программист и этот код в продакшене ни разу не показывал ошибок. А еще фаззер
 может подсунуть такой набор данных, про который программист мог и не подумать.
-И фаззер легко использовать, помогает дополнить unit-тестирование и ручные тесты
-не смогу выявить всех возможных проблем.
+Фаззер легко использовать, помогает выполнить тысячи unit-тестов, которые не
+надо писать.
 
-Типы багов, которые может найти фаззинг:
+### Что можно тестировать с помощью фаззинга
 
+Фаззинг можно применять к любым функциям, которые обрабатывают сложные данные.
+Например, библиотеки сжатия и распаковки, парсеры HTTPS и DNS, различные
+десериализаторы, мультимедиа кодеки, криптографические библиотеки, запросы к
+базам данных.
+А также для всего, что принимает данные из внешнего мира, то есть из
+недоверенных источников.
 
-Типы фаззеров
-- на основе генерации
-- на основе мутации
+### Типы фаззеров
+
+Существует два основных вида фаззеров по принципу генерации данных:
+- случайные (глупые, на основе мутации)
+- с учетом покрытия (умные, на основе генерации)
+
+Случайный фаззинг каждый раз генерирует полностью случайные значения никак не
+зависящие от прошлых тестов. Случайные фаззеры являются более простыми и более
+быстрыми. Они могут дать хороший результат за малую цену [[14]][14].
+
+Фаззинг с учетом покрытия использует результаты прошлых тестов для отслеживания
+и последующего увеличения покрытия кода [[15]][15]. Такие фаззеры могут
+углубляться в тестируемые данные и для работы таких фаззеров нужны наборы данных
+подаваемых на вход. Эти данные называются корпус - это минимальный набор
+тестовых входных данные, которые могут сгенерировать максимальное покрытие кода.
+
+## Использование фаззеров в Go
+
+### go-fuzz
+
+https://github.com/dvyukov/go-fuzz
+
+### native fuzzing
+
+https://go.dev/blog/fuzz-beta
 
 ## Источники информации
 
-- [1]: https://ru.wikipedia.org/wiki/Тестирование_программного_обеспечения
-- [2]: https://ru.wikipedia.org/wiki/Фаззинг
-- [3]: http://secretsofconsulting.blogspot.com/2017/02/fuzz-testing-and-fuzz-history.html
-- [4]: https://ru.wikipedia.org/wiki/Вайнберг,_Джеральд 
-- [5]: https://youtu.be/EJVp13f_aIs
-- [6]: https://google.github.io/clusterfuzz/
-- [7]: https://en.wikipedia.org/wiki/American_fuzzy_lop_(fuzzer)
-- [8]: https://llvm.org/docs/LibFuzzer.html
-- [9]: https://github.com/dvyukov/go-fuzz
-- [10]: https://en.wikipedia.org/wiki/Shellshock_(software_bug)
-- [11]: https://en.wikipedia.org/wiki/Heartbleed
-- [12]: https://github.com/google/oss-fuzz
-- [13]: https://github.com/microsoft/onefuzz
+- https://ru.wikipedia.org/wiki/Тестирование_программного_обеспечения
+- https://ru.wikipedia.org/wiki/Фаззинг
+- http://secretsofconsulting.blogspot.com/2017/02/fuzz-testing-and-fuzz-history.html
+- https://ru.wikipedia.org/wiki/Вайнберг,_Джеральд
+- https://youtu.be/EJVp13f_aIs
+- https://google.github.io/clusterfuzz/
+- https://en.wikipedia.org/wiki/American_fuzzy_lop_(fuzzer)
+- https://llvm.org/docs/LibFuzzer.html
+- https://github.com/dvyukov/go-fuzz
+- https://en.wikipedia.org/wiki/Shellshock_(software_bug)
+- https://en.wikipedia.org/wiki/Heartbleed
+- https://github.com/google/oss-fuzz
+- https://github.com/microsoft/onefuzz
+- https://www.f-secure.com/en/consulting/our-thinking/15-minute-guide-to-fuzzing
+- https://google.github.io/clusterfuzz/reference/coverage-guided-vs-blackbox/
+
+[1]: https://ru.wikipedia.org/wiki/Тестирование_программного_обеспечения
+[2]: https://ru.wikipedia.org/wiki/Фаззинг
+[3]: http://secretsofconsulting.blogspot.com/2017/02/fuzz-testing-and-fuzz-history.html
+[4]: https://ru.wikipedia.org/wiki/Вайнберг,_Джеральд 
+[5]: https://youtu.be/EJVp13f_aIs
+[6]: https://google.github.io/clusterfuzz/
+[7]: https://en.wikipedia.org/wiki/American_fuzzy_lop_(fuzzer)
+[8]: https://llvm.org/docs/LibFuzzer.html
+[9]: https://github.com/dvyukov/go-fuzz
+[10]: https://en.wikipedia.org/wiki/Shellshock_(software_bug)
+[11]: https://en.wikipedia.org/wiki/Heartbleed
+[12]: https://github.com/google/oss-fuzz
+[13]: https://github.com/microsoft/onefuzz
+[14]: https://www.f-secure.com/en/consulting/our-thinking/15-minute-guide-to-fuzzing
+[15]: https://google.github.io/clusterfuzz/reference/coverage-guided-vs-blackbox/
