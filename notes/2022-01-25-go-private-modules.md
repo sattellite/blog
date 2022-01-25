@@ -52,3 +52,8 @@ git по http. Поэтому надо поправить конфигураци
 [url "ssh://git@git.company.tld:22/"]
   insteadOf = https://git.company.tld/
 ```
+
+## Дополнительная информация
+
+- https://goproxy.io/docs/GOPRIVATE-env.html
+- https://go.dev/ref/mod#private-modules
