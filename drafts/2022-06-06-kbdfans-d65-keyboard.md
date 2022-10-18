@@ -71,7 +71,7 @@ qmk config user.keyboard=kbdfans/kbd67/mkiirgb/v3
 # Даю название раскладке
 qmk config user.keymap=sattellite
 # Создаю директории раскладки
-qmk new-keymap
+qmk new-keymap -kb=kbdfans/kbd67/mkiirgb/v3
 # Генерирую файл с раскладкой из скачанного из конфигуратора файла
 qmk json2c -o keyboards/kbdfans/kbd67/mkiirgb/keymaps/sattellite/keymap.c ~/Downloads/keymap.json
 # Добавляю поддержку via
@@ -80,7 +80,7 @@ VIA_ENABLE = yes
 LTO_ENABLE = yes
 EOF
 ## Компилирую прошивку
-qmk compile
+qmk compile -kb=kbdfans/kbd67/mkiirgb/v3 -km=sattellite
 ```
 
 Итоговый файл помещается в корневую директорию qmk firmware. Оттуда его можно
