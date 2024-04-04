@@ -1,6 +1,6 @@
 ---
 tags: linux, network, ssh
-publishdate: "2020-10-09"
+publishdate: 2020-10-09T10:10:10
 ---
 
 # Настройка приватного туннеля через SSH
